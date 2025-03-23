@@ -47,8 +47,8 @@ public class User {
 
     }
     private void updateBalance(Transaction transaction) {
-        if(transaction.getSenderId() == this.id) this.currentBalance += transaction.getAmount();
-        else this.currentBalance -= transaction.getAmount();
+        if(transaction.getSenderId() == this.id) this.currentBalance -= transaction.getAmount();
+        else this.currentBalance += transaction.getAmount();
     }
 
     public void removeTransaction(Transaction transaction) {
@@ -57,8 +57,8 @@ public class User {
     }
 
     private void rollBackBalance(Transaction transaction) {
-        if(transaction.getSenderId() == this.id) this.currentBalance -= transaction.getAmount();
-        else this.currentBalance += transaction.getAmount();
+        if(transaction.getSenderId() == this.id) this.currentBalance += transaction.getAmount();
+        else this.currentBalance -= transaction.getAmount();
     }
 
     public void displayTransactions() {

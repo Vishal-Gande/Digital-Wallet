@@ -4,7 +4,9 @@ public class DemoWalletManager {
 
 
     public static void main(String[] args) {
-        WalletManager wm = new WalletManager();
+
+        WalletManager wm = WalletManager.getInstance();
+        WalletManager wm2 = WalletManager.getInstance(); // to test singleton
 
         User u1 = new User(1,"vish","vish@gmail","asdf",0);
         User u2 = new User(2,"prav","prav@gmail","asdf",0);
@@ -14,9 +16,13 @@ public class DemoWalletManager {
         wm.addUser(u2);
         wm.addUser(u3);
 
+        wm.topUpWallet(u1,0);
+        wm.topUpWallet(u2,7000);
+        wm.topUpWallet(u3,8000);
+
         Transaction t1 = new Transaction(1, "Dinner bill split", new Date(), 1200.50, 1, 2, TransactionStatus.COMPLETED);
         Transaction t2 = new Transaction(2, "Movie tickets", new Date(), 800.00, 1, 2, TransactionStatus.PROGRESS);
-        Transaction t3 = new Transaction(3, "Rent payment", new Date(), 15000.00, 2, 3, TransactionStatus.COMPLETED);
+        Transaction t3 = new Transaction(3, "Rent payment", new Date(), 1500.00, 2, 3, TransactionStatus.COMPLETED);
         Transaction t4 = new Transaction(4, "Electricity bill", new Date(), 2300.75, 3, 1, TransactionStatus.FAILED);
         Transaction t5 = new Transaction(5, "Grocery payment", new Date(), 3200.00, 2, 1, TransactionStatus.COMPLETED);
 
